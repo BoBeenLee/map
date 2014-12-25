@@ -24,7 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MapController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(MapController.class);
-
+	private static final String apiKeyName = "daum.serverkey";
+	
 	@Autowired
 	ApplicationContext context;
 
@@ -47,8 +48,8 @@ public class MapController {
 	public ModelAndView daum() {
 		ModelAndView mv = new ModelAndView();
 //		logger.info("property : " + apiKey);
-		logger.info("key " + context.getEnvironment().getProperty("daum.localkey"));
-		mv.addObject("apikey", context.getEnvironment().getProperty("daum.localkey"));
+		logger.info("key " + context.getEnvironment().getProperty(apiKeyName));
+		mv.addObject("apikey", context.getEnvironment().getProperty(apiKeyName));
 		mv.setViewName("/map/daum");
 		return mv;
 	}
