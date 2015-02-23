@@ -1,4 +1,4 @@
-package com.nexters.map;
+package com.intersection.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -22,10 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @PropertySource("classpath:settings.properties")
 public class MapController {
-	private static final Logger logger = LoggerFactory
-			.getLogger(MapController.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 	private static final String apiKeyName = "daum.serverkey";
-	
+
 	@Autowired
 	ApplicationContext context;
 
@@ -34,11 +34,11 @@ public class MapController {
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
 		return "home";
@@ -46,17 +46,12 @@ public class MapController {
 
 	@RequestMapping(value = "/daum", method = RequestMethod.GET)
 	public ModelAndView daum() {
+
 		ModelAndView mv = new ModelAndView();
-//		logger.info("property : " + apiKey);
+		// logger.info("property : " + apiKey);
 		logger.info("key " + context.getEnvironment().getProperty(apiKeyName));
 		mv.addObject("apikey", context.getEnvironment().getProperty(apiKeyName));
 		mv.setViewName("/map/daum");
 		return mv;
 	}
 }
-
-/*
- * property key 값 불러오기
- * - @PropertySource 세팅값 불러오고 @Value 를 이용하여 ${} 값 대입하기
- * - ApplicationContext 객체를 불러 getEnvironment().getProperty에 해당 속성 불러오기
-*/
