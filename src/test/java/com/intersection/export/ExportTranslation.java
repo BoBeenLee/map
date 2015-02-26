@@ -90,7 +90,7 @@ public class ExportTranslation extends AbstractContextControllerTests {
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void search(){
 		transService.getTranslationByName("test");
 	}

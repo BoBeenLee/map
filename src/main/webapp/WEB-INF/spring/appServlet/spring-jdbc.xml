@@ -10,20 +10,30 @@
                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<mvc:annotation-driven />
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!--  value="jdbc:postgresql://ec2-54-163-248-144.compute-1.amazonaws.com:5432/d9dfjf9a8nof08?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />  -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> 
+		<property name="driverClass" value="org.postgresql.Driver" /> <property name="url" 
+		value="jdbc:postgresql://ec2-54-163-248-144.compute-1.amazonaws.com:5432/d9dfjf9a8nof08?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" 
+		/> <property name="username" value="cmvqlnxdomyori" /> <property name="password" 
+		value="vN4Z6YQx3zjANoTuDcGDMGICBi" /> </bean> -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> 
+		<property name="driverClass" value="org.postgresql.Driver" /> <property name="url" 
+		value="jdbc:postgresql://localhost:5432/map" /> <property name="username" 
+		value="postgres" /> <property name="password" value="postgres" /> </bean> -->
+		
 	<beans profile="default">
 		<bean id="dataSource"
 			class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 			<property name="driverClass" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost:5432/map" />
-			<property name="username" value="postgres" />
-			<property name="password" value="postgres" />
+			<property name="url"
+				value="jdbc:postgresql://ec2-54-163-248-144.compute-1.amazonaws.com:5432/d9dfjf9a8nof08?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+			<property name="username" value="cmvqlnxdomyori" />
+			<property name="password" value="vN4Z6YQx3zjANoTuDcGDMGICBi" />
 		</bean>
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
