@@ -31,15 +31,11 @@ public class UserController {
 	@RequestMapping(value = "/proc/{code}", method=RequestMethod.POST, consumes={MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody 
 	public void process(@PathVariable("code") String code, @RequestBody User user) {
-		System.out.println("code : " + code + " user : " + user.toString());
+	//	System.out.println("code : " + code + " user : " + user.toString());
 		
 		if (code.equals("add")) {
 			if (user.getPhoneId() != null){
-				try {
-					userService.addUser(user);
-				} catch(Exception e){
-					
-				}
+				userService.addUser(user);
 			}
 		} else if (code.equals("remove")) {
 			userService.removeUserByNo(user.getUserNo());

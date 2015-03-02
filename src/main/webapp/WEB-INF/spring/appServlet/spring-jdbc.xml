@@ -31,9 +31,9 @@
 			class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 			<property name="driverClass" value="org.postgresql.Driver" />
 			<property name="url"
-				value="jdbc:postgresql://ec2-54-163-248-144.compute-1.amazonaws.com:5432/d9dfjf9a8nof08?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
-			<property name="username" value="cmvqlnxdomyori" />
-			<property name="password" value="vN4Z6YQx3zjANoTuDcGDMGICBi" />
+				value="jdbc:postgresql://ec2-54-235-193-41.compute-1.amazonaws.com:5432/dfq64id6g1bv60?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+			<property name="username" value="thxpgpbrnavgnn" />
+			<property name="password" value="KOCZyz7-73FHoQd3upveqVFI5I" />
 		</bean>
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
