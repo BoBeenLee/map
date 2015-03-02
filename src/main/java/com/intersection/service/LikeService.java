@@ -79,11 +79,12 @@ public class LikeService {
 	public List<Translation> getLikesByNames(List<String> names, String phoneId) {
 		Query query = em
 				.createNativeQuery("select trans.trans_no, trans.name, trans.type, (select count(*) from is_trans_like_db where trans_no = trans.trans_no) as like_count,"
-						+ " (phone_id is not null) as like_status from is_trans_db trans left outer join is_trans_like_db trans_like"
+						+ " (phone_id is not null) as like_status "
+						+ " from is_trans_db trans left outer join is_trans_like_db trans_like"
 						+ " on trans_like.trans_no = trans.trans_no"
 						+ " left outer join is_user_db usr"
 						+ " on trans_like.user_no = usr.user_no and usr.phone_id = :phoneId"
-						+ " where trans.name IN (:names)" + " and usr.phone_id = :phoneId" + " order by like_count;");
+						+ " where trans.name IN (:names)" + " order by like_status desc, like_count;");
 		query.setParameter("names", names);
 		query.setParameter("phoneId", phoneId);
 
