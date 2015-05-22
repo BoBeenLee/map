@@ -47,6 +47,17 @@ public class ExportTranslation extends AbstractContextControllerTests {
 				status().isOk()).build();
 	}
 	
+	/*
+		추출시 문제, 왕십리역이 없다.
+		select *
+		from is_trans_db
+		where name like '%왕십리%';
+		
+		update is_trans_db
+		set type = '2호선,5호선,경의선,분당선'
+		where trans_no = 493;
+	 */
+	
 	public List<Translation> findTranslations(String url) throws IOException {
 		List<Translation> translations = new ArrayList<Translation>();
 
